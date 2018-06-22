@@ -46,7 +46,7 @@ module EphemeralLvm
         
         # Add all NVMe devices
         # https://github.com/rightscale-cookbooks/ephemeral_lvm/blob/49ffe4633eedeb52f5eb4492b011b834628ec263/libraries/helper.rb#L74-L75
-        ephemeral_devices.concat Dir.glob('/dev/nvme*n*'.select{ |dev| dev != "/dev/nvme0n1p1"}
+        ephemeral_devices.concat Dir.glob('/dev/nvme*n*').select{ |dev| dev != "/dev/nvme0n1p1"}
 
         # Servers running on Xen hypervisor require the block device to be in /dev/xvdX instead of /dev/sdX
         if node.attribute?('virtualization') && node['virtualization']['system'] == "xen"
